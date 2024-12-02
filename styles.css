@@ -5,16 +5,33 @@ body {
     padding: 0;
     color: #e0e0e0;
     background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    display: grid;
+    grid-template-columns: auto auto; /* Dos columnas: contenido principal y barra lateral */
+    gap: 20px; /* Espacio entre columnas */
+    align-items: start; /* Alinea el contenido verticalmente */
+    max-width: 1200px; /* Limita el ancho máximo */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 20px;
 }
 
 /* Header principal */
 .top-header {
+    grid-column: span 2; /* Header ocupa ambas columnas */
     background-color: #1e1e1e;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 
 .header-content {
@@ -42,20 +59,15 @@ body {
     background-color: #333;
 }
 
-/* Contenedor principal */
-.container {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 70px); /* Ajuste para el header */
-}
-
 /* Barra de navegación */
 .navbar {
-    display: flex;
-    justify-content: space-around;
     background-color: #1e1e1e;
     padding: 10px 0;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 8px;
 }
 
 .tab {
@@ -72,15 +84,14 @@ body {
 
 /* Contenido principal */
 .main-content {
-    display: flex;
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Contenedor de tarjetas */
 .tab-content {
-    flex: 2;
     display: none;
     flex-direction: column;
     gap: 15px;
@@ -99,7 +110,7 @@ body {
 
 .search-bar input {
     width: 100%;
-    max-width: 600px; /* Limita el ancho de la barra de búsqueda */
+    max-width: 600px;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #444;
@@ -139,10 +150,10 @@ body {
 
 /* Barra lateral */
 .sidebar {
-    flex: 1;
     background-color: #1e1e1e;
     padding: 20px;
     box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
 
 .sidebar h3 {
@@ -160,26 +171,13 @@ body {
     margin-bottom: 10px;
 }
 
-/* Ajustes para responsividad */
+/* Ajustes responsivos */
 @media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap;
-    }
-
-    .tab {
-        margin-bottom: 5px;
+    .container {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
     }
 
     .sidebar {
-        display: none; /* Oculta la barra lateral en pantallas pequeñas */
-    }
-
-    .main-content {
-        flex: 1;
-        padding: 10px;
-    }
-
-    .search-bar input {
-        max-width: 100%;
+        margin-top: 20px; /* Mueve la barra lateral debajo del contenido */
     }
 }
