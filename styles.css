@@ -1,68 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+:root {
+    --header-outer-height: 110px;
+    --header-inner-height: 70px;
+    --header-height-difference: calc(var(--header-outer-height) - var(--header-inner-height));
+    --header-bg: #2c2c2c;
+}
+
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "DM Sans", sans-serif;
     margin: 0;
     padding: 0;
-    color: #e0e0e0;
     background-color: #121212;
+    color: #e0e0e0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 /* Header principal */
-.top-header {
-    width: 100%; /* Ocupa todo el ancho de la página */
-    background-color: #1e1e1e;
-    padding: 10px 20px;
+/* Header principal */
+.header-outer {
+    width: 100%; /* Ocupa todo el ancho de la ventana */
+    height: var(--header-outer-height, 110px); /* Altura predeterminada */
+    position: sticky;
+    top: 0; /* Mantén el header visible al desplazarse */
+    background-color: var(--header-bg, #2c2c2c); /* Fondo del header */
+    z-index: 1000; /* Siempre encima del contenido */
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centra los elementos */
     align-items: center;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-.header-content {
+/* Contenedor interno del header */
+.header-inner {
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    max-width: none; /* Elimina el ancho máximo */
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Espaciado entre elementos */
+    padding: 0 20px; /* Espaciado horizontal */
+    box-sizing: border-box; /* Asegura que el padding esté dentro del ancho */
 }
 
-.header-logo {
-    height: 50px;
-    margin-right: 20px;
+/* Ajuste del logo */
+.header-logo img {
+    height: 50px; /* Tamaño del logo */
+    max-height: 100%; /* Evita que exceda el contenedor */
 }
 
-.header-link {
+/* Navegación del header */
+.header-navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaciado entre enlaces */
+}
+
+.header-navigation a {
+    font-size: 1rem;
     color: #e0e0e0;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
     padding: 10px 15px;
-    border: 1px solid #444;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-.header-link:hover {
-    background-color: #333;
+.header-navigation a:hover {
+    background-color: #444; /* Efecto hover */
 }
 
-/* Navbar */
-.navbar {
-    width: 100%; /* Ocupa todo el ancho de la página */
+@media (min-width: 800px) {
+    .header-navigation a {
+        display: inline-block;
+    }
+
+    .header-navigation button {
+        display: none;
+    }
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 3;
     background-color: #1e1e1e;
-    padding: 10px 0;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Barra lateral */
+.sidebar {
+    flex: 1;
+    background-color: #1e1e1e;
+    padding: 20px;
+    margin-left: 30px;
+    /* Separación añadida entre la guía y el contenedor principal */
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+/* Barra de navegación */
+.navbar {
+    width: 98%;
+    background-color: #1e1e1e;
+    padding: 10px;
     display: flex;
     justify-content: space-around;
-    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 .tab {
-    cursor: pointer;
     padding: 10px 20px;
-    border-radius: 5px;
+    cursor: pointer;
     color: #e0e0e0;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
@@ -70,25 +145,7 @@ body {
     background-color: #333;
 }
 
-/* Contenedor principal */
-.main-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 20px;
-}
-
-/* Contenido principal */
-.main-content {
-    flex: 3; /* Principal ocupa más espacio */
-    padding: 20px;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Contenedor de tarjetas */
+/* Contenido dinámico */
 .tab-content {
     display: none;
     flex-direction: column;
@@ -128,57 +185,97 @@ body {
 /* Grid de tarjetas */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
+    /* Tamaño fijo */
     gap: 15px;
+    /* Espaciado entre las cartas */
+    justify-content: center;
+    /* Centra las tarjetas en el contenedor */
 }
 
+/* Cartas */
 .card {
+    width: 140px;
+    /* Ancho fijo */
+    height: 50px;
+    /* Altura fija */
     background-color: #2c2c2c;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    /* Centra el contenido verticalmente */
+    justify-content: center;
+    /* Centra el contenido horizontalmente */
+    font-size: 12px;
+    color: #e0e0e0;
     transition: transform 0.2s, background-color 0.2s;
+    visibility: visible;
+    /* Siempre visible por defecto */
+    opacity: 1;
+    /* Totalmente visible */
+    transition: opacity 0.3s ease-in-out;
+    /* Suaviza el efecto */
+}
+
+.card.hidden {
+    visibility: hidden;
+    /* Oculta la carta */
+    opacity: 0;
+    /* Hace que desaparezca */
+    pointer-events: none;
+    /* Desactiva la interacción */
+}
+
+.card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Imagen circular */
+    margin-right: 10px;
+}
+
+.card span {
+    font-weight: bold;
 }
 
 .card:hover {
     background-color: #444;
     transform: scale(1.05);
+    /* Efecto de ampliación al pasar el mouse */
 }
 
-/* Barra lateral */
-.sidebar {
-    flex: 1; /* Ocupa menos espacio */
-    padding: 20px;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
-    margin-left: 20px;
+/* Ajustes para números en las tarjetas */
+.card-number {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: inline-block;
 }
 
-.sidebar h3 {
-    margin-top: 0;
-    color: #fff;
+/* Video de fondo */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    /* Asegura que el video esté detrás del contenido */
 }
 
-.sidebar ul {
-    padding: 0;
-    list-style: none;
-    margin: 20px 0;
-}
-
-.sidebar li {
-    margin-bottom: 10px;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .main-container {
-        flex-direction: column; /* Apila el contenido */
-    }
-
-    .sidebar {
-        margin-left: 0;
-        margin-top: 20px; /* Coloca la barra lateral debajo */
-    }
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cubre todo el fondo sin deformarse */
+    filter: blur(4px);
+    /* Aplica el desenfoque gaussiano */
+    -webkit-filter: blur(4px);
+    /* Compatibilidad para navegadores webkit */
 }

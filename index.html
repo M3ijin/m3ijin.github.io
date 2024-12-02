@@ -7,75 +7,86 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Video de fondo -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="fondo.mp4" type="video/mp4">
+        </video>
+    </div>
+    
     <!-- Header principal -->
-    <header class="top-header">
-        <div class="header-content">
-            <img src="tu-imagen-aqui.png" alt="Logo" class="header-logo">
-            <a href="https://tu-enlace-aqui.com" target="_blank" class="header-link">Visítanos</a>
+    <header class="header-outer">
+        <div class="header-inner responsive-wrapper">
+            <div class="header-logo">
+                <img src="Logo.png" />
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <!-- Barra de navegación superior -->
-        <header class="navbar">
-            <div class="tab" onclick="switchTab('voices')">🎤 Voces (42)</div>
-            <div class="tab" onclick="switchTab('sounds')">🔊 Sonidos (374)</div>
-            <div class="tab" onclick="switchTab('backgrounds')">🎶 Fondos (26)</div>
-            <div class="tab" onclick="switchTab('examples')">📁 Ejemplos (4)</div>
-        </header>
-
+    <!-- Contenedor principal -->
+    <div class="main-container">
         <!-- Contenido principal -->
-        <div class="main-content">
-            <!-- Contenedor de tarjetas -->
+        <main class="main-content">
+            <!-- Barra de navegación -->
+            <nav class="navbar">
+                <div class="tab" onclick="switchTab('voices')">🎤 Voces (42)</div>
+                <div class="tab" onclick="switchTab('sounds')">🔊 Sonidos (374)</div>
+                <div class="tab" onclick="switchTab('backgrounds')">🎶 Fondos (26)</div>
+                <div class="tab" onclick="switchTab('examples')">📁 Ejemplos (4)</div>
+            </nav>
+
+            <!-- Contenido dinámico -->
             <section id="voices" class="tab-content active">
                 <div class="search-bar">
-                    <input type="text" placeholder="Buscar...">
+                    <input type="text" id="search-voices" placeholder="Buscar..." oninput="filterContent('voices')">
                 </div>
                 <h2>Voces</h2>
-                <div class="grid">
+                <div class="grid" id="grid-voices">
                     <div class="card">Mopolo</div>
                     <div class="card">Rubius</div>
                     <div class="card">Willyrex</div>
-                    <!-- Agrega más tarjetas -->
+                    <div class="card">Ibai</div>
                 </div>
             </section>
             <section id="sounds" class="tab-content">
                 <div class="search-bar">
-                    <input type="text" placeholder="Buscar...">
+                    <input type="text" id="search-sounds" placeholder="Buscar..." oninput="filterContent('sounds')">
                 </div>
                 <h2>Sonidos</h2>
-                <div class="grid">
+                <div class="grid" id="grid-sounds">
                     <div class="card">Sonido 1</div>
                     <div class="card">Sonido 2</div>
-                    <!-- Más elementos -->
+                    <div class="card">Sonido 3</div>
                 </div>
             </section>
             <section id="backgrounds" class="tab-content">
                 <div class="search-bar">
-                    <input type="text" placeholder="Buscar...">
+                    <input type="text" id="search-backgrounds" placeholder="Buscar..." oninput="filterContent('backgrounds')">
                 </div>
                 <h2>Fondos</h2>
-                <div class="grid">
-                    <div class="card">Fondo 1</div>
-                    <div class="card">Fondo 2</div>
+                <div class="grid" id="grid-backgrounds">
+                    <div class="card">Sonido 1</div>
+                    <div class="card">Sonido 2</div>
+                    <div class="card">Sonido 3</div>
                 </div>
             </section>
             <section id="examples" class="tab-content">
                 <div class="search-bar">
-                    <input type="text" placeholder="Buscar...">
+                    <input type="text" id="search-examples" placeholder="Buscar..." oninput="filterContent('examples')">
                 </div>
                 <h2>Ejemplos</h2>
-                <div class="grid">
-                    <div class="card">Ejemplo 1</div>
-                    <div class="card">Ejemplo 2</div>
+                <div class="grid" id="grid-examples">
+                    <div class="card">Sonido 1</div>
+                    <div class="card">Sonido 2</div>
+                    <div class="card">Sonido 3</div>
                 </div>
             </section>
-        </div>
+        </main>
 
-        <!-- Barra lateral derecha -->
+        <!-- Barra lateral -->
         <aside class="sidebar">
             <h3>📖 Guía</h3>
-            <p>Usa los ejemplos de esta página para explorar diferentes audios, voces y efectos.</p>
             <ul>
                 <li>🎤 Voces: Ejemplos de voces con diferentes estilos.</li>
                 <li>🔊 Sonidos: Clips cortos de sonido.</li>
@@ -85,6 +96,7 @@
             <p>Para más información, consulta nuestro soporte.</p>
         </aside>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
