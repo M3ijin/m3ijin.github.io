@@ -7,11 +7,46 @@ body {
     background-color: #121212;
 }
 
+/* Header principal */
+.top-header {
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.header-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.header-link:hover {
+    background-color: #333;
+}
+
 /* Contenedor principal */
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 70px); /* Ajuste para el header */
 }
 
 /* Barra de navegación */
@@ -55,6 +90,33 @@ body {
     display: flex;
 }
 
+/* Barra de búsqueda */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: 600px; /* Limita el ancho de la barra de búsqueda */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    font-size: 16px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: #666;
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Grid de tarjetas */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -96,4 +158,28 @@ body {
 
 .sidebar li {
     margin-bottom: 10px;
+}
+
+/* Ajustes para responsividad */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        margin-bottom: 5px;
+    }
+
+    .sidebar {
+        display: none; /* Oculta la barra lateral en pantallas pequeñas */
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .search-bar input {
+        max-width: 100%;
+    }
 }
