@@ -6,32 +6,19 @@ body {
     color: #e0e0e0;
     background-color: #121212;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-}
-
-/* Contenedor principal */
-.container {
-    display: grid;
-    grid-template-columns: auto auto; /* Dos columnas: contenido principal y barra lateral */
-    gap: 20px; /* Espacio entre columnas */
-    align-items: start; /* Alinea el contenido verticalmente */
-    max-width: 1200px; /* Limita el ancho máximo */
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 20px;
 }
 
 /* Header principal */
 .top-header {
-    grid-column: span 2; /* Header ocupa ambas columnas */
+    width: 100%; /* Ocupa todo el ancho de la página */
     background-color: #1e1e1e;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
 }
 
 .header-content {
@@ -59,15 +46,16 @@ body {
     background-color: #333;
 }
 
-/* Barra de navegación */
+/* Navbar */
 .navbar {
+    width: 100%; /* Ocupa todo el ancho de la página */
     background-color: #1e1e1e;
     padding: 10px 0;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-around;
     border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .tab {
@@ -82,12 +70,22 @@ body {
     background-color: #333;
 }
 
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
 /* Contenido principal */
 .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex: 3; /* Principal ocupa más espacio */
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Contenedor de tarjetas */
@@ -150,10 +148,12 @@ body {
 
 /* Barra lateral */
 .sidebar {
-    background-color: #1e1e1e;
+    flex: 1; /* Ocupa menos espacio */
     padding: 20px;
-    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+    background-color: #1e1e1e;
     border-radius: 8px;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
 }
 
 .sidebar h3 {
@@ -173,11 +173,12 @@ body {
 
 /* Ajustes responsivos */
 @media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    .main-container {
+        flex-direction: column; /* Apila el contenido */
     }
 
     .sidebar {
-        margin-top: 20px; /* Mueve la barra lateral debajo del contenido */
+        margin-left: 0;
+        margin-top: 20px; /* Coloca la barra lateral debajo */
     }
 }
