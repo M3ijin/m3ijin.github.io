@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,39 +8,48 @@
 </head>
 <body>
     <div class="container">
-        <nav class="sidebar">
-            <ul>
-                <li onclick="showSection('voices')">
-                    <i class="icon">🎤</i> Voces
-                </li>
-                <li onclick="showSection('sounds')">
-                    <i class="icon">🔊</i> Sonidos
-                </li>
-                <li onclick="showSection('filters')">
-                    <i class="icon">✨</i> Filtros
-                </li>
-                <li onclick="showSection('backgrounds')">
-                    <i class="icon">🎶</i> Audios de Fondo
-                </li>
-            </ul>
-        </nav>
+        <header class="navbar">
+            <div class="tab" onclick="switchTab('voices')">🎤 Voces</div>
+            <div class="tab" onclick="switchTab('sounds')">🔊 Sonidos</div>
+            <div class="tab" onclick="switchTab('filters')">✨ Filtros</div>
+            <div class="tab" onclick="switchTab('backgrounds')">🎶 Fondos</div>
+        </header>
         <main class="content">
-            <section id="voices" class="section active">
-                <h1>Voces</h1>
-                <p>Ejemplos de voces con efectos.</p>
-            </section>
-            <section id="sounds" class="section">
-                <h1>Sonidos</h1>
-                <p>Ejemplos de clips de sonido.</p>
-            </section>
-            <section id="filters" class="section">
-                <h1>Filtros</h1>
-                <p>Comparativa de audio con y sin filtros.</p>
-            </section>
-            <section id="backgrounds" class="section">
-                <h1>Audios de Fondo</h1>
-                <p>Ejemplos de música y efectos de fondo.</p>
-            </section>
+            <!-- Contenido para Voces -->
+            <div id="voices" class="tab-content active">
+                <h2>Voces</h2>
+                <div class="grid">
+                    <div class="card">Carlos</div>
+                    <div class="card">Brian</div>
+                    <div class="card">Adam</div>
+                    <!-- Agrega más elementos según necesites -->
+                </div>
+            </div>
+            <!-- Contenido para Sonidos -->
+            <div id="sounds" class="tab-content">
+                <h2>Sonidos</h2>
+                <div class="grid">
+                    <div class="card">Sonido 1</div>
+                    <div class="card">Sonido 2</div>
+                    <!-- Agrega más elementos -->
+                </div>
+            </div>
+            <!-- Contenido para Filtros -->
+            <div id="filters" class="tab-content">
+                <h2>Filtros</h2>
+                <div class="grid">
+                    <div class="card">Filtro 1</div>
+                    <div class="card">Filtro 2</div>
+                </div>
+            </div>
+            <!-- Contenido para Fondos -->
+            <div id="backgrounds" class="tab-content">
+                <h2>Fondos</h2>
+                <div class="grid">
+                    <div class="card">Fondo 1</div>
+                    <div class="card">Fondo 2</div>
+                </div>
+            </div>
         </main>
     </div>
     <script src="script.js"></script>
