@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Audio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li onclick="showSection('voices')">
+                    <i class="icon">🎤</i> Voces
+                </li>
+                <li onclick="showSection('sounds')">
+                    <i class="icon">🔊</i> Sonidos
+                </li>
+                <li onclick="showSection('filters')">
+                    <i class="icon">✨</i> Filtros
+                </li>
+                <li onclick="showSection('backgrounds')">
+                    <i class="icon">🎶</i> Audios de Fondo
+                </li>
+            </ul>
+        </nav>
+        <main class="content">
+            <section id="voices" class="section active">
+                <h1>Voces</h1>
+                <p>Ejemplos de voces con efectos.</p>
+            </section>
+            <section id="sounds" class="section">
+                <h1>Sonidos</h1>
+                <p>Ejemplos de clips de sonido.</p>
+            </section>
+            <section id="filters" class="section">
+                <h1>Filtros</h1>
+                <p>Comparativa de audio con y sin filtros.</p>
+            </section>
+            <section id="backgrounds" class="section">
+                <h1>Audios de Fondo</h1>
+                <p>Ejemplos de música y efectos de fondo.</p>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
