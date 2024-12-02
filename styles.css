@@ -1,20 +1,20 @@
-/* General Styles */
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212;
     color: #e0e0e0;
+    background-color: #121212;
 }
 
-/* Container */
+/* Contenedor principal */
 .container {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
-/* Navbar */
+/* Barra de navegación */
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -35,23 +35,26 @@ body {
     background-color: #333;
 }
 
-/* Content */
-.content {
-    flex-grow: 1;
+/* Contenido principal */
+.main-content {
+    display: flex;
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
 }
 
-/* Tab Content */
+/* Contenedor de tarjetas */
 .tab-content {
+    flex: 2;
     display: none;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .tab-content.active {
-    display: block;
+    display: flex;
 }
 
-/* Grid for Cards */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -70,4 +73,27 @@ body {
 .card:hover {
     background-color: #444;
     transform: scale(1.05);
+}
+
+/* Barra lateral */
+.sidebar {
+    flex: 1;
+    background-color: #1e1e1e;
+    padding: 20px;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.sidebar ul {
+    padding: 0;
+    list-style: none;
+    margin: 20px 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
 }

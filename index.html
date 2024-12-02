@@ -8,49 +8,65 @@
 </head>
 <body>
     <div class="container">
+        <!-- Barra de navegación superior -->
         <header class="navbar">
-            <div class="tab" onclick="switchTab('voices')">🎤 Voces</div>
-            <div class="tab" onclick="switchTab('sounds')">🔊 Sonidos</div>
-            <div class="tab" onclick="switchTab('filters')">✨ Filtros</div>
-            <div class="tab" onclick="switchTab('backgrounds')">🎶 Fondos</div>
+            <div class="tab" onclick="switchTab('voices')">🎤 Voces (42)</div>
+            <div class="tab" onclick="switchTab('sounds')">🔊 Sonidos (374)</div>
+            <div class="tab" onclick="switchTab('backgrounds')">🎶 Fondos (26)</div>
+            <div class="tab" onclick="switchTab('examples')">📁 Ejemplos (4)</div>
         </header>
-        <main class="content">
-            <!-- Contenido para Voces -->
-            <div id="voices" class="tab-content active">
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <!-- Contenedor de tarjetas -->
+            <section id="voices" class="tab-content active">
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar...">
+                </div>
                 <h2>Voces</h2>
                 <div class="grid">
-                    <div class="card">Carlos</div>
-                    <div class="card">Brian</div>
-                    <div class="card">Adam</div>
-                    <!-- Agrega más elementos según necesites -->
+                    <div class="card">Mopolo</div>
+                    <div class="card">Rubius</div>
+                    <div class="card">Willyrex</div>
+                    <!-- Agrega más tarjetas -->
                 </div>
-            </div>
-            <!-- Contenido para Sonidos -->
-            <div id="sounds" class="tab-content">
+            </section>
+            <section id="sounds" class="tab-content">
                 <h2>Sonidos</h2>
                 <div class="grid">
                     <div class="card">Sonido 1</div>
                     <div class="card">Sonido 2</div>
-                    <!-- Agrega más elementos -->
+                    <!-- Más elementos -->
                 </div>
-            </div>
-            <!-- Contenido para Filtros -->
-            <div id="filters" class="tab-content">
-                <h2>Filtros</h2>
-                <div class="grid">
-                    <div class="card">Filtro 1</div>
-                    <div class="card">Filtro 2</div>
-                </div>
-            </div>
-            <!-- Contenido para Fondos -->
-            <div id="backgrounds" class="tab-content">
+            </section>
+            <section id="backgrounds" class="tab-content">
                 <h2>Fondos</h2>
                 <div class="grid">
                     <div class="card">Fondo 1</div>
                     <div class="card">Fondo 2</div>
                 </div>
-            </div>
-        </main>
+            </section>
+            <section id="examples" class="tab-content">
+                <h2>Ejemplos</h2>
+                <div class="grid">
+                    <div class="card">Ejemplo 1</div>
+                    <div class="card">Ejemplo 2</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Barra lateral derecha -->
+        <aside class="sidebar">
+            <h3>📖 Guía</h3>
+            <p>Usa los ejemplos de esta página para explorar diferentes audios, voces y efectos.</p>
+            <ul>
+                <li>🎤 Voces: Ejemplos de voces con diferentes estilos.</li>
+                <li>🔊 Sonidos: Clips cortos de sonido.</li>
+                <li>🎶 Fondos: Música o efectos de fondo.</li>
+                <li>📁 Ejemplos: Combinaciones prácticas.</li>
+            </ul>
+            <p>Para más información, consulta nuestro soporte.</p>
+        </aside>
     </div>
     <script src="script.js"></script>
 </body>
