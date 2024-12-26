@@ -1,22 +1,34 @@
-        // Cambiar entre secciones
-        function switchTab(tabId) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-            const activeTab = document.getElementById(tabId);
-            if (activeTab) activeTab.classList.add('active');
-        }
+// Variable global para el audio actual
+let currentAudio = null;
 
-        // Filtrar contenido en las secciones
-        function filterContent(section) {
-            const input = document.getElementById(`search-${section}`).value.toLowerCase();
-            const grid = document.getElementById(`grid-${section}`);
-            const cards = grid.querySelectorAll('.card');
-        
-            cards.forEach(card => {
-                if (card.textContent.toLowerCase().includes(input)) {
-                    card.classList.remove('hidden'); // Muestra la carta
-                } else {
-                    card.classList.add('hidden'); // Oculta la carta
-                }
-            });
-        }
+function showCategory(categoryId) {
+  // Ocultar todas las categorías
+  const categories = document.querySelectorAll('.category');
+  categories.forEach(category => {
+    category.classList.remove('active');
+  });
+
+  // Mostrar la categoría seleccionada
+  const selectedCategory = document.getElementById(categoryId);
+  if (selectedCategory) {
+    selectedCategory.classList.add('active');
+  }
+}
+
+function playAudioAndAddText(audioFile, text) {
+  // Si hay un audio en reproducción, lo detenemos
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0; // Reiniciamos el audio
+  }
+
+  // Creamos un nuevo objeto Audio y lo asignamos a currentAudio
+  currentAudio = new Audio(audioFile);
+  currentAudio.play();
+
+  // Seleccionamos el textarea
+  const textarea = document.querySelector('.text-box-container textarea');
+
+  // Concatenar el texto al contenido actual (sin saltos de línea)
+  textarea.value += (textarea.value.trim() ? ' ' : '') + text;
+}

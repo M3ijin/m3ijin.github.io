@@ -1,281 +1,546 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
-
-*,
-*:after,
-*:before {
+/* Estilo global para asegurarnos de la consistencia */
+* {
     box-sizing: border-box;
+    /* Incluye padding y bordes en el ancho total */
 }
 
-:root {
-    --header-outer-height: 110px;
-    --header-inner-height: 70px;
-    --header-height-difference: calc(var(--header-outer-height) - var(--header-inner-height));
-    --header-bg: #2c2c2c;
-}
-
-/* Estilos generales */
-body {
-    font-family: "DM Sans", sans-serif;
+body,
+html {
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    color: #e0e0e0;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    /* Tamaño base del texto */
+    line-height: 1.6;
+    /* Espaciado entre líneas para mejor legibilidad */
 }
 
-/* Header principal */
-/* Header principal */
-.header-outer {
-    width: 100%; /* Ocupa todo el ancho de la ventana */
-    height: var(--header-outer-height, 110px); /* Altura predeterminada */
-    position: sticky;
-    top: 0; /* Mantén el header visible al desplazarse */
-    background-color: var(--header-bg, #2c2c2c); /* Fondo del header */
-    z-index: 1000; /* Siempre encima del contenido */
-    display: flex;
-    justify-content: center; /* Centra los elementos */
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+body {
+    background: linear-gradient(135deg, #f5f5f5, #eaeaea);
 }
 
-/* Contenedor interno del header */
-.header-inner {
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    max-width: none; /* Elimina el ancho máximo */
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Espaciado entre elementos */
-    padding: 0 20px; /* Espaciado horizontal */
-    box-sizing: border-box; /* Asegura que el padding esté dentro del ancho */
-}
-
-/* Ajuste del logo */
-.header-logo img {
-    height: 50px; /* Tamaño del logo */
-    max-height: 100%; /* Evita que exceda el contenedor */
-}
-
-/* Navegación del header */
-.header-navigation {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Espaciado entre enlaces */
-}
-
-.header-navigation a {
-    font-size: 1rem;
-    color: #e0e0e0;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.header-navigation a:hover {
-    background-color: #444; /* Efecto hover */
-}
-
-@media (min-width: 800px) {
-    .header-navigation a {
-        display: inline-block;
-    }
-
-    .header-navigation button {
-        display: none;
-    }
-}
-
-/* Contenedor principal */
-.main-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    max-width: 1200px;
+/* Contenedor genérico de secciones */
+main {
+    max-width: 900px;
+    /* Ancho uniforme para todos los recuadros */
     width: 100%;
+    /* Asegura que se ajuste al contenedor padre */
+    margin: 0 auto;
+    /* Centrado horizontal */
+}
+
+header {
+    background: linear-gradient(135deg, #6441a5, #BCADD8); /* Gradiente actualizado */
+    color: #fff;
+    display: flex;
+    align-items: center; /* Alineación vertical centrada */
+    justify-content: center; /* Alineación horizontal centrada */
+    padding: 1rem 1rem; /* Mismos valores de padding superior e inferior */
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar el header */
+}
+
+.header-content {
+    display: flex;
+    align-items: center; /* Centrar verticalmente la imagen y el texto */
+    justify-content: center;
+    flex-wrap: wrap; /* Ajustar diseño en pantallas pequeñas */
+    gap: 1rem; /* Espaciado entre elementos */
+}
+
+.header-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff; /* Borde blanco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra alrededor de la imagen */
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin: 0;
+    opacity: 0.9;
+    text-align: center; /* Asegura que el subtítulo esté centrado */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px; /* Línea decorativa más pequeña */
+    height: 2px;
+    background: #fff; /* Línea decorativa debajo del header */
+    border-radius: 3px;
+}
+
+header div {
+    text-align: left;
+    /* Asegura que el texto principal esté alineado a la izquierda */
+}
+
+main {
+    padding: 0;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-/* Contenido principal */
-.main-content {
-    flex: 3;
-    background-color: #1e1e1e;
-    padding: 20px;
+/* Recuadro superior (info-main) */
+.info-main {
+    max-width: 900px;
+    /* Igual al recuadro inferior */
+    margin: 1rem auto;
+    /* Separación superior e inferior */
+    padding: 0;
+    background: #fff;
+    /* Fondo blanco */
     border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
 }
 
-/* Barra lateral */
-.sidebar {
-    flex: 1;
-    background-color: #1e1e1e;
-    padding: 20px;
-    margin-left: 30px;
-    /* Separación añadida entre la guía y el contenedor principal */
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
 
-.sidebar h3 {
-    margin-top: 0;
-}
-
-/* Barra de navegación */
-.navbar {
-    width: 98%;
-    background-color: #1e1e1e;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    border-radius: 8px;
-}
-
-.tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    color: #e0e0e0;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.tab:hover {
-    background-color: #333;
-}
-
-/* Contenido dinámico */
-.tab-content {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.tab-content.active {
-    display: flex;
-}
-
-/* Barra de búsqueda */
-.search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.search-bar input {
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    background-color: #2c2c2c;
-    color: #e0e0e0;
-    font-size: 16px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.search-bar input:focus {
-    outline: none;
-    border-color: #666;
-    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
-}
-
-/* Grid de tarjetas */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
-    /* Tamaño fijo */
-    gap: 15px;
-    /* Espaciado entre las cartas */
-    justify-content: center;
-    /* Centra las tarjetas en el contenedor */
-}
-
-/* Cartas */
-.card {
-    width: 140px;
-    /* Ancho fijo */
-    height: 50px;
-    /* Altura fija */
-    background-color: #2c2c2c;
-    padding: 10px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+/* Recuadro de la imagen y los íconos */
+.info-box {
+    background: #fff;
     display: flex;
     align-items: center;
-    /* Centra el contenido verticalmente */
-    justify-content: center;
-    /* Centra el contenido horizontalmente */
-    font-size: 12px;
-    color: #e0e0e0;
-    transition: transform 0.2s, background-color 0.2s;
-    visibility: visible;
-    /* Siempre visible por defecto */
-    opacity: 1;
-    /* Totalmente visible */
-    transition: opacity 0.3s ease-in-out;
-    /* Suaviza el efecto */
+    /* Centrado vertical */
+    justify-content: flex-start;
+    /* Elementos alineados a la izquierda */
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    gap: 1rem;
+    /* Espaciado entre elementos */
 }
 
-.card.hidden {
-    visibility: hidden;
-    /* Oculta la carta */
-    opacity: 0;
-    /* Hace que desaparezca */
-    pointer-events: none;
-    /* Desactiva la interacción */
-}
-
-.card img {
-    width: 40px;
-    height: 40px;
+/* Imagen */
+.info-box img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    /* Imagen circular */
-    margin-right: 10px;
-}
-
-.card span {
-    font-weight: bold;
-}
-
-.card:hover {
-    background-color: #444;
-    transform: scale(1.05);
-    /* Efecto de ampliación al pasar el mouse */
-}
-
-/* Ajustes para números en las tarjetas */
-.card-number {
-    background-color: #3a3a3a;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 5px 10px;
-    font-size: 12px;
-    display: inline-block;
-}
-
-/* Video de fondo */
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-    /* Asegura que el video esté detrás del contenido */
-}
-
-.video-background video {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    /* Cubre todo el fondo sin deformarse */
-    filter: blur(4px);
-    /* Aplica el desenfoque gaussiano */
-    -webkit-filter: blur(4px);
-    /* Compatibilidad para navegadores webkit */
+}
+
+/* Texto alineado a la derecha de la imagen */
+.info-box p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+    /* Texto oscuro */
+    flex: 1;
+    /* Permite que el texto ocupe el espacio restante */
+    text-align: left;
+    /* Texto alineado a la izquierda */
+}
+
+/* Contenedor de los íconos */
+.info-icons {
+    display: flex;
+    align-items: center; /* Centra los íconos verticalmente */
+    gap: 0.5rem; /* Espaciado entre íconos */
+}
+
+/* Estilo base para los enlaces */
+.info-icons a {
+    text-decoration: none;
+    font-size: 1.3rem; /* Tamaño reducido del ícono */
+    transition: transform 0.3s, opacity 0.3s; /* Animaciones */
+}
+
+/* Colores representativos */
+.info-icons .twitch {
+    color: #6441a5; /* Morado de Twitch */
+}
+
+.info-icons .youtube {
+    color: #FF0000; /* Rojo de YouTube */
+}
+
+/* Efectos al pasar el cursor */
+.info-icons a:hover {
+    transform: scale(1.2); /* Aumenta ligeramente el tamaño */
+    opacity: 0.8; /* Reduce un poco la opacidad */
+}
+
+/* Sobrescribir estilos predeterminados de enlaces */
+.info-icons a:visited,
+.info-icons a:active {
+    color: inherit !important; /* Mantén el color definido inicialmente */
+    opacity: 1; /* Evita que se desvanezca */
+}
+
+.category {
+    display: none;
+    /* Ocultamos todas las categorías por defecto */
+    background: #fff;
+    /* Fondo blanco */
+    padding: 1rem;
+    border-radius: 8px;
+    /* Bordes redondeados */
+    margin-bottom: 2rem;
+    /* Espaciado debajo del recuadro */
+}
+
+.category.active {
+    display: block;
+    /* Muestra solo la categoría activa */
+}
+
+.category h2 {
+    margin-top: 0;
+    color: #444;
+}
+
+/* Recuadro de categorías */
+.category-container {
+    max-width: 900px;
+    /* Igual al recuadro superior */
+    width: 100%;
+    /* Asegura el ajuste completo */
+    margin: 1rem auto;
+    /* Centrado horizontal y separación */
+    padding: 1rem;
+    /* Espaciado interno */
+    background: #fff;
+    /* Fondo blanco */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+}
+
+/* Navegación dentro del recuadro */
+.category-container nav {
+    display: flex;
+    /* Botones en una línea */
+    justify-content: center;
+    /* Centra los botones horizontalmente */
+    gap: 1rem;
+    /* Espaciado entre botones */
+    margin-bottom: 1rem;
+    /* Separación con las categorías */
+}
+
+/* Botones del menú de navegación */
+.category-container nav button {
+    background: #f0f0f0;
+    color: #666;
+    border: 1px solid #ddd;
+    padding: 0.4rem 1.5rem;
+    /* Botones largos y bajos */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Espacio entre ícono y texto */
+    transition: background 0.3s, transform 0.2s;
+}
+
+.category-container nav button img {
+    width: 18px;
+    height: 18px;
+}
+
+.category-container nav button:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.category ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* Siempre 5 botones por fila */
+    gap: 1rem;
+    /* Espaciado entre filas y columnas */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    /* Centra el grid horizontalmente si hay espacio extra */
+}
+
+.category li {
+    text-align: center;
+    /* Centra los botones dentro de las celdas */
+}
+
+/* Botones de sonidos */
+.category button {
+    width: 150px; /* Tamaño fijo del botón */
+    height: 60px; /* Altura del botón */
+    background: #f7f7f7; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 0.73rem; /* Texto legible */
+    cursor: pointer; /* Cursor de mano */
+    display: flex; /* Para incluir íconos */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    gap: 0.5rem; /* Espaciado entre icono y texto */
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.category button img {
+    width: 40px;
+    /* Tamaño del ícono */
+    height: 40px;
+    /* Tamaño del ícono */
+    border-radius: 50%;
+    /* Imágenes circulares */
+    object-fit: cover;
+    /* Asegura que las imágenes no se deformen */
+}
+
+
+/* Icono dentro de los botones */
+.category button::before {
+    font-size: 1.2rem;
+}
+
+/* Hover sobre los botones */
+.category button:hover {
+    background: #eaeaea; /* Fondo más oscuro */
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Active (cuando se pulsa el botón) */
+.category button:active {
+    transform: translateY(0); /* Vuelve a su posición */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra original */
+}
+
+/* Recuadro inferior con el textbox */
+.text-box-container {
+    max-width: 900px;
+    /* Igual al ancho de los otros recuadros */
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+    margin: 1rem auto;
+    /* Centrado horizontal y separación superior */
+    padding: 1rem;
+    /* Espaciado interno */
+    background: #fff;
+    /* Fondo blanco */
+    border-radius: 12px;
+    /* Más redondeado */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+
+}
+
+/* Título del recuadro */
+.text-box-container h2 {
+    margin-bottom: 0.5rem;
+    /* Espaciado entre el título y el textbox */
+    font-size: 1rem;
+    /* Tamaño del texto */
+    color: #333;
+    /* Color oscuro */
+}
+
+.text-box-container textarea {
+    width: 100%;
+    /* Ocupa todo el ancho del contenedor */
+    height: 120px;
+    /* Altura inicial */
+    padding: 1rem;
+    /* Espaciado interno */
+    font-size: 1rem;
+    /* Texto legible */
+    color: #333;
+    /* Color oscuro para el texto */
+    background: #f4f4f4;
+    /* Fondo gris claro */
+    border: 2px solid #ddd;
+    /* Borde sutil */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Sombra interna discreta */
+    transition: border-color 0.3s, background-color 0.3s;
+    /* Transiciones suaves */
+    resize: vertical;
+    /* Permite redimensionar verticalmente */
+}
+
+/* Efecto al enfocar */
+.text-box-container textarea:focus {
+    border-color: #bbb;
+    /* Borde gris más oscuro */
+    background: #fff;
+    /* Fondo blanco al enfocar */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Sombra interna ligeramente más fuerte */
+    outline: none;
+    /* Elimina el contorno predeterminado */
+}
+
+/* Estilo para las instrucciones */
+.text-box-container .instructions {
+    margin-top: 0.5rem;
+    /* Espaciado superior con el textarea */
+    font-size: 0.85rem;
+    /* Tamaño de fuente más pequeño */
+    color: #666;
+    /* Color gris oscuro para no competir visualmente */
+    line-height: 1.4;
+    /* Mejor legibilidad */
+}
+
+/* Lista de instrucciones */
+.instruction-list {
+    margin-top: 0.5rem;
+    /* Separación del párrafo */
+    padding-left: 1.5rem;
+    /* Espaciado para alinear con el resto del contenido */
+    font-size: 0.85rem;
+    /* Tamaño similar al texto de las instrucciones */
+    color: #666;
+    /* Color gris oscuro */
+    line-height: 1.4;
+    /* Mejor legibilidad */
+}
+
+.instruction-list li {
+    margin-bottom: 0.6rem;
+}
+
+.instruction-list ul {
+    margin-top: 0.6rem; /* Espaciado superior para la sublista */
+    padding-left: 1.5rem; /* Aumenta el margen izquierdo para sublistas */
+    list-style-type: circle; /* Cambia el estilo de las viñetas para las sublistas */
+}
+
+.instruction-list ul li {
+    margin-bottom: 0.3rem; /* Reduce el espaciado entre los elementos de la sublista */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-main,
+.category-container,
+.text-box-container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+footer {
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    border-top: 1px solid #444;
+    margin-top: auto;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    body, html {
+        font-size: 14px;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    main, .info-main, .category-container, .text-box-container {
+        max-width: 100%;
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .category-container nav {
+        flex-wrap: wrap; /* Permite que los botones se envuelvan en varias líneas */
+        gap: 0.5rem; /* Reduce el espacio entre los botones */
+    }
+
+    .category-container nav button {
+        flex: 1 1 calc(50% - 1rem); /* Botones ocupan el 50% del ancho con margen */
+        max-width: calc(50% - 1rem); /* Asegura que no se desborden */
+        padding: 0.6rem 0.8rem; /* Ajusta el tamaño del padding */
+        font-size: 0.8rem; /* Reduce el tamaño de la fuente */
+    }
+
+    .info-box {
+        display: flex;
+        align-items: center; /* Centrado vertical */
+        justify-content: flex-start; /* Alineación de los elementos hacia la izquierda */
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        gap: 0.5rem; /* Reduce el espacio entre los elementos */
+    }
+    
+    .info-box img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    
+    .info-icons {
+        display: flex;
+        align-items: center; /* Centra verticalmente los íconos */
+        gap: 0.5rem; /* Espaciado mínimo entre íconos */
+        margin-left: 0; /* Elimina cualquier margen que empuje los íconos a la derecha */
+    }
+
+    .category ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category button {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .text-box-container textarea {
+        height: 100px;
+    }
+
+    footer {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
 }
