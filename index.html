@@ -35,6 +35,7 @@
                 </a>
             </div>
         </section>
+        <button id="dark-mode-toggle">Modo Oscuro</button>
     </main>
 
     <main>
@@ -60,7 +61,7 @@
                 <h2>Voces</h2>
                 <ul>
                     <li>
-                        <button onclick="playAudioAndAddText('audios/voces/voz adam.mp3', '(Adam)')">
+                        <button onclick="playAudioAndAddText('audios/voces/voz adam.mp3', '(Adam)', '#ff0000')">
                             <img src="imagenes/elevenlabs.png"> Adam
                         </button>
                     </li>
@@ -72,6 +73,11 @@
                     <li>
                         <button onclick="playAudioAndAddText('audios/voces/voz carlos.mp3', '(Carlos)')">
                             <img src="imagenes/carlos.png"> Carlos
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="playAudioAndAddText('audios/voces/voz m. rajoy.mp3', '(M. Rajoy)')">
+                            <img src="imagenes/m. rajoy.png"> M. Rajoy
                         </button>
                     </li>
                 </ul>
@@ -125,7 +131,7 @@
     <!-- Recuadro inferior con el textbox -->
     <section class="text-box-container">
         <h2>Aqui va tu texto para luego utilizarlo en la recompensa</h2>
-        <textarea
+        <textarea class="editable-area" contenteditable="true"
             placeholder="Aqui se añaden las voces, sonidos, fondos o ejemplos a los que hagas clic. Editalo a tu manera para agregar texto y filtros a tu gusto."></textarea>
         <p class="instructions">Instrucciones de Uso</p>
         <ul class="instruction-list">
