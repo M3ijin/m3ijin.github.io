@@ -268,14 +268,14 @@ main {
 
 .category ul {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, max-content)); /* Tamaño flexible según el contenido */
     /* Siempre 5 botones por fila */
     gap: 1rem;
     /* Espaciado entre filas y columnas */
     list-style: none;
     padding: 0;
     margin: 0;
-    justify-content: center;
+    justify-content: left;
     /* Centra el grid horizontalmente si hay espacio extra */
 }
 
@@ -286,8 +286,9 @@ main {
 
 /* Botones de sonidos */
 .category button {
-    width: 150px; /* Tamaño fijo del botón */
-    height: 60px; /* Altura del botón */
+    width: 100%; /* Ocupa todo el ancho disponible en su celda */
+    height: auto; /* Ajusta la altura automáticamente */
+    padding: 0.5rem 1rem; /* Espaciado interno */
     background: #f7f7f7; /* Fondo claro */
     color: #333; /* Texto oscuro */
     border: 1px solid #ddd; /* Borde sutil */
@@ -300,6 +301,7 @@ main {
     justify-content: center; /* Centrado horizontal */
     gap: 0.5rem; /* Espaciado entre icono y texto */
     transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-sizing: border-box; /* Incluye el padding y borde en el tamaño */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
@@ -331,6 +333,18 @@ main {
 .category button:active {
     transform: translateY(0); /* Vuelve a su posición */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra original */
+}
+
+/* Estilos específicos para botones con solo texto */
+.category button.texto-solo {
+    width: 150px; /* Más ancho */
+    height: 40px; /* Menos alto */
+    font-size: 0.85rem; /* Ajuste del texto */
+    padding: 0.5rem 1rem; /* Espaciado interno */
+    display: flex; /* Centra el texto verticalmente */
+    align-items: center;
+    justify-content: center;
+    gap: 0; /* Sin espacio adicional */
 }
 
 /* Recuadro inferior con el textbox */

@@ -37,11 +37,17 @@ function playAudioAndAddText(audioFile, text) {
   textarea.value += (textarea.value.trim() ? ' ' : '') + text;
 }
 
+// Establecer modo oscuro por defecto
+let darkModePreference = localStorage.getItem('darkMode');
+if (!darkModePreference) {
+    localStorage.setItem('darkMode', 'enabled');
+    darkModePreference = 'enabled';
+}
+
 // Verificar si hay una preferencia guardada en el almacenamiento local
-const darkModePreference = localStorage.getItem('darkMode');
 if (darkModePreference === 'enabled') {
-    body.classList.add('dark-mode');
-    darkModeToggle.textContent = 'Modo Claro';
+  body.classList.add('dark-mode');
+  darkModeToggle.textContent = 'Modo Claro';
 }
 
 // Agregar un evento al botón para alternar el modo oscuro
