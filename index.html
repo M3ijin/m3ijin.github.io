@@ -7,158 +7,538 @@
     <title>TTS MrMeijin</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="imagenes/logo.png"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <div class="header-content">
-            <img src="imagenes/logo.png" class="header-image">
-            <div>
+            <img src="imagenes/logo.png" class="header-image" alt="Logo MrMeijin">
+            <div class="header-text">
                 <h1>TTS MrMeijin</h1>
-                <p>Aquí puedes ver todo lo disponible para el TTS.</p>
+                <p>Explora todas las opciones disponibles para el Text-to-Speech</p>
             </div>
         </div>
     </header>
 
-    <!-- Nuevo main para el recuadro de la imagen y el enlace -->
+    <!-- Panel de información del creador -->
     <main class="info-main">
         <section class="info-box">
-            <img src="imagenes/logo.png">
+            <img src="imagenes/logo.png" alt="Avatar MrMeijin">
+            <div class="info-text">
+                <h3>MrMeijin</h3>
+                <p>Creador de contenido</p>
+            </div>
             <div class="info-icons">
-                <a href="https://www.twitch.tv/mrmeijin" target="_blank" class="twitch">
+                <a href="https://www.twitch.tv/mrmeijin" target="_blank" rel="noopener noreferrer" class="twitch" aria-label="Canal de Twitch">
                     <i class="fab fa-twitch"></i>
                 </a>
-                <a href="https://www.youtube.com/@MrMeijin" target="_blank" class="youtube">
+                <a href="https://www.youtube.com/@MrMeijin" target="_blank" rel="noopener noreferrer" class="youtube" aria-label="Canal de YouTube">
                     <i class="fab fa-youtube"></i>
                 </a>
             </div>
+            <button id="dark-mode-toggle" aria-label="Cambiar modo de color">
+                <i class="fas fa-moon"></i>
+                <span>Modo Oscuro</span>
+            </button>
         </section>
-        <button id="dark-mode-toggle">Modo Oscuro</button>
     </main>
 
     <main>
-        <!-- Recuadro blanco que contiene el menú y las categorías -->
+        <!-- Contenedor de categorías -->
         <section class="category-container">
-            <!-- Menú de navegación dentro del recuadro blanco -->
-            <nav>
-                <button onclick="showCategory('voces')">
-                    <img src="iconos/voces.png"> Voces
+            <div class="category-inner">
+                <!-- Navegación por pestañas -->
+                <nav class="tabs-nav" role="tablist">
+                <button 
+                    class="tab-button active" 
+                    onclick="showCategory('voces')"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="voces">
+                    <img src="iconos/voces.png" alt="">
+                    <span>Voces</span>
                 </button>
-                <button onclick="showCategory('sonidos')">
-                    <img src="iconos/sonidos.png"> Sonidos
+                <button 
+                    class="tab-button" 
+                    onclick="showCategory('sonidos')"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="sonidos">
+                    <img src="iconos/sonidos.png" alt="">
+                    <span>Sonidos</span>
                 </button>
-                <button onclick="showCategory('fondos')">
-                    <img src="iconos/fondos.png"> Fondos
+                <button 
+                    class="tab-button" 
+                    onclick="showCategory('fondos')"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="fondos">
+                    <img src="iconos/fondos.png" alt="">
+                    <span>Fondos</span>
                 </button>
-                <button onclick="showCategory('ejemplos')">
-                    <img src="iconos/ejemplos.png"> Ejemplos
+                <button 
+                    class="tab-button" 
+                    onclick="showCategory('ejemplos')"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="ejemplos">
+                    <img src="iconos/ejemplos.png" alt="">
+                    <span>Ejemplos</span>
                 </button>
             </nav>
 
-            <section class="category active" id="voces">
-                <h2>Voces</h2>
-                <ul>
-                    <li>
-                        <button onclick="playAudioAndAddText('audios/voces/voz adam.mp3', '<Adam>', '#ff0000')">
-                            <img src="imagenes/elevenlabs.png"> Adam
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="playAudioAndAddText('audios/voces/voz brian.mp3', '<Brian>')">
-                            <img src="imagenes/elevenlabs.png"> Brian
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="playAudioAndAddText('audios/voces/voz carlos.mp3', '<Carlos>')">
-                            <img src="imagenes/loquendo.png"> Carlos
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="playAudioAndAddText('audios/voces/voz jorge.mp3', '<Jorge>')">
-                            <img src="imagenes/loquendo.png"> Jorge
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="playAudioAndAddText('audios/voces/voz juan.mp3', '<Juan>')">
-                            <img src="imagenes/loquendo.png"> Juan
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="playAudioAndAddText('audios/voces/voz rajoy.mp3', '<Rajoy>')">
-                            <img src="imagenes/rajoy.png"> M. Rajoy
-                        </button>
-                    </li>
-                </ul>
+            <!-- Sección de Voces con Slider -->
+            <section class="category active" id="voces" role="tabpanel">
+                <h2>Voces Disponibles</h2>
+                <div class="slider-container">
+                    <button class="slider-btn slider-btn-prev" onclick="slideVoces(-1)" aria-label="Anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="slider-wrapper">
+                        <div class="slider-track" id="slider-voces">
+                            <div class="slider-item" onclick="playAudioAndAddText('audios/voces/voz adam.mp3', '<Adam>')">
+                                <div class="slider-item-content">
+                                    <img src="imagenes/elevenlabs.png" alt="ElevenLabs Adam">
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Adam</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item" onclick="playAudioAndAddText('audios/voces/voz brian.mp3', '<Brian>')">
+                                <div class="slider-item-content">
+                                    <img src="imagenes/elevenlabs.png" alt="ElevenLabs Brian">
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Brian</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item" onclick="playAudioAndAddText('audios/voces/voz carlos.mp3', '<Carlos>')">
+                                <div class="slider-item-content">
+                                    <img src="imagenes/loquendo.png" alt="Loquendo Carlos">
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Carlos</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item" onclick="playAudioAndAddText('audios/voces/voz jorge.mp3', '<Jorge>')">
+                                <div class="slider-item-content">
+                                    <img src="imagenes/loquendo.png" alt="Loquendo Jorge">
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Jorge</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item" onclick="playAudioAndAddText('audios/voces/voz juan.mp3', '<Juan>')">
+                                <div class="slider-item-content">
+                                    <img src="imagenes/loquendo.png" alt="Loquendo Juan">
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Juan</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                                                        
+                            <div class="slider-item" onclick="playAudioAndAddText('audios/voces/voz messi.mp3', '<Messi>')">
+                                <div class="slider-item-content">
+                                    <img src="imagenes/messi.png" alt="Messi MW2">
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Messi</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item" onclick="playAudioAndAddText('audios/voces/voz rajoy.mp3', '<Rajoy>')">
+                                <div class="slider-item-content">
+                                    <img src="imagenes/rajoy.png" alt="M. Rajoy">
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">M. Rajoy</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn slider-btn-next" onclick="slideVoces(1)" aria-label="Siguiente">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="slider-dots" id="dots-voces"></div>
             </section>
 
-            <!-- Sección de Sonidos -->
-            <section class="category" id="sonidos">
-                <h2>Sonidos</h2>
-                <ul>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/1.mp3', '<1>')">Lego Breaking</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/2.mp3', '<2>')">Rizz</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/3.mp3', '<3>')">Vine Boom</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/4.mp3', '<4>')">Metal Pipe Falling</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/5.mp3', '<5>')">HUH</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/6.mp3', '<6>')">Oof</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/7.mp3', '<7>')">Get Out</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/8.mp3', '<8>')">SUS</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/9.mp3', '<9>')">WAJAJA</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/10.mp3', '<10>')">Ah Shit, Here We Go Again</button></li>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/sonidos/11.mp3', '<11>')">Mobile Phone Ringtone</button></li>
-                </ul>
+            <!-- Sección de Sonidos con Slider -->
+            <section class="category" id="sonidos" role="tabpanel">
+                <h2>Efectos de Sonido</h2>
+                <div class="slider-container">
+                    <button class="slider-btn slider-btn-prev" onclick="slideSonidos(-1)" aria-label="Anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="slider-wrapper">
+                        <div class="slider-track" id="slider-sonidos">
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/1.mp3', '<1>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-cube"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Lego Breaking</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/2.mp3', '<2>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Rizz</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/3.mp3', '<3>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-bomb"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Vine Boom</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/4.mp3', '<4>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-wrench"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Metal Pipe</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/5.mp3', '<5>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-question"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">HUH</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/6.mp3', '<6>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Oof</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/7.mp3', '<7>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-door-open"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Get Out</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/8.mp3', '<8>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">SUS</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/9.mp3', '<9>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-laugh"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">WAJAJA</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/10.mp3', '<10>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Ah Shit...</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/sonidos/11.mp3', '<11>')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Ringtone</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn slider-btn-next" onclick="slideSonidos(1)" aria-label="Siguiente">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="slider-dots" id="dots-sonidos"></div>
             </section>
 
-            <!-- Sección de Fondos -->
-            <section class="category" id="fondos">
-                <h2>Fondos</h2>
-                <ul>
-                    <li><button class="texto-solo" onclick="playAudioAndAddText('audios/fondos/loquendo.mp3', ':loquendo')">Loquendo</button></li>
-                </ul>
+            <!-- Sección de Fondos con Slider -->
+            <section class="category" id="fondos" role="tabpanel">
+                <h2>Fondos Musicales</h2>
+                <div class="slider-container">
+                    <button class="slider-btn slider-btn-prev" onclick="slideFondos(-1)" aria-label="Anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="slider-wrapper">
+                        <div class="slider-track" id="slider-fondos">
+                            <div class="slider-item sound-item" onclick="playAudioAndAddText('audios/fondos/loquendo.mp3', ':loquendo')">
+                                <div class="slider-item-content">
+                                    <div class="sound-icon music-icon">
+                                        <i class="fas fa-music"></i>
+                                    </div>
+                                    <div class="slider-item-info">
+                                        <span class="slider-item-name">Loquendo</span>
+                                    </div>
+                                    <div class="play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn slider-btn-next" onclick="slideFondos(1)" aria-label="Siguiente">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="slider-dots" id="dots-fondos"></div>
             </section>
 
             <!-- Sección de Ejemplos -->
-            <section class="category" id="ejemplos">
-                <h2>Ejemplos</h2>
-                <ul>
-                    <li><button class="texto-solo"
-                            onclick="playAudioAndAddText('audios/ejemplos/ejemplo fondo general y filtros.mp3', ':loquendo <9[e]> Hola a todos <3[a]> <Brian[g]> esto es un ejemplo <8[af]> para usar el TTS del MrMeijin <2[rb]>')">Ejemplo
-                            con Fondo General</button></li>
-                    <li><button class="texto-solo"
-                            onclick="playAudioAndAddText('audios/ejemplos/ejemplo fondo en voz y filtros.mp3', '<9[e]> Hola a todos <3[a]> <Brian[g]:loquendo> esto es un ejemplo <8[af]> para usar el TTS del MrMeijin <2[rb]> <Adam[c]> y esta vez el fondo solo lo tiene el texto que lee Brian')">Ejemplo
-                            con Fondo en Voz</button></li>
-                </ul>
+            <section class="category" id="ejemplos" role="tabpanel">
+                <h2>Ejemplos de Uso</h2>
+                <div class="examples-container">
+                    <div class="example-card">
+                        <div class="example-header">
+                            <i class="fas fa-play-circle"></i>
+                            <h3>Ejemplo con Fondo General</h3>
+                        </div>
+                        <p class="example-description">Aplica un fondo musical a todo el texto</p>
+                        <button class="example-button" 
+                            onclick="playAudioAndAddText('audios/ejemplos/ejemplo fondo general y filtros.mp3', ':loquendo <9[e]> Hola a todos <3[a]> <Brian[g]> esto es un ejemplo <8[af]> para usar el TTS del MrMeijin <2[rb]>')">
+                            <i class="fas fa-headphones"></i>
+                            <span>Escuchar y Agregar</span>
+                        </button>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-header">
+                            <i class="fas fa-play-circle"></i>
+                            <h3>Ejemplo con Fondo en Voz</h3>
+                        </div>
+                        <p class="example-description">Aplica el fondo solo a voces específicas</p>
+                        <button class="example-button"
+                            onclick="playAudioAndAddText('audios/ejemplos/ejemplo fondo en voz y filtros.mp3', '<9[e]> Hola a todos <3[a]> <Brian[g]:loquendo> esto es un ejemplo <8[af]> para usar el TTS del MrMeijin <2[rb]> <Adam[c]> y esta vez el fondo solo lo tiene el texto que lee Brian')">
+                            <i class="fas fa-headphones"></i>
+                            <span>Escuchar y Agregar</span>
+                        </button>
+                    </div>
+                </div>
             </section>
+            </div>
+        </section>
     </main>
 
-    <!-- Recuadro inferior con el textbox -->
+    <!-- Editor de texto -->
     <section class="text-box-container">
-        <h2>Aqui va tu texto para luego utilizarlo en la recompensa</h2>
-        <textarea class="editable-area" contenteditable="true"
-            placeholder="Aqui se añaden las voces, sonidos, fondos o ejemplos a los que hagas clic. Editalo a tu manera para agregar texto y filtros a tu gusto."></textarea>
-        <p class="instructions">Instrucciones de Uso</p>
-        <ul class="instruction-list">
-            <li>Antes de empezar, recuerda que puedes aplicar filtros a las voces o sonidos de la siguiente manera: &lt;Adam[g]&gt; | &lt;1[e]&gt; </li>
-            <li>Te dejo por aqui una lista de los filtros disponibles</li>
-            <ul>
-                <li>[e] Eco | [a] Agudo | [g] Grave | [v+] Mas rápido | [v-] Mas lento | [i] Inverso | [af] Afuera | [t] Telefono | [c] Corriendo | [rb] Ruido blanco</li>
-            </ul>
-            <li>La voz predeterminada es la de Carlos al no usarse ninguna de las voces disponibles</li>
-            <li>Los fondos se pueden aplicar de dos maneras:</li>
-            <ul>
-                <li>El fondo se aplica de manera global &#129046; :loquendo &lt;Carlos&gt; Hola a todos …</li>
-                <li>El fondo se aplica concretamente a una voz o sonido &#129046; &lt;Carlos:loquendo&gt; Hola a todos ...</li>
-            </ul>
-            <li>Si se aplica un fondo de manera global, se anularan el resto de fondos añadidos en las voces o sonidos</li>
-            <li>Tampoco se puede añadir dos fondos como fondo general, al igual que en una voz o sonido, pues se tendrá en cuenta el primero que se quiere aplicar &#129046; &lt;Carlos:loquendo:ejemplo&gt; &#129044; Este solo aplicaria el primer fondo, es decir :loquendo</li>
-            <li>Para acabar, recuerda que tienes los ejemplos para ver la composicion de todo, desde como usar las voces, a como aplicar los fondos correctamente</li>
-        </ul>
+        <div class="text-box-inner">
+            <div class="editor-header">
+                <h2><i class="fas fa-edit"></i> Tu Texto para TTS</h2>
+                <button class="clear-button" onclick="document.querySelector('.editable-area').value = ''">
+                    <i class="fas fa-trash-alt"></i>
+                    Limpiar
+                </button>
+            </div>
+            <textarea 
+                class="editable-area" 
+                placeholder="Haz clic en las voces, sonidos o ejemplos para agregarlos aquí. Luego edita el texto a tu gusto y añade filtros."></textarea>
+            
+            <details class="instructions-accordion">
+                <summary class="instructions-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Instrucciones de Uso</span>
+                    <i class="fas fa-chevron-down"></i>
+                </summary>
+                <div class="instructions-content">
+                    <div class="instruction-section">
+                        <h4><i class="fas fa-filter"></i> Filtros Disponibles</h4>
+                        <p>Puedes aplicar filtros a las voces o sonidos de esta manera: <code>&lt;Adam[g]&gt;</code> o <code>&lt;1[e]&gt;</code></p>
+                        <div class="filters-grid">
+                            <span class="filter-tag">
+                                <code>[e]</code>
+                                <span class="filter-name">Eco</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[a]</code>
+                                <span class="filter-name">Agudo</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[g]</code>
+                                <span class="filter-name">Grave</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[v+]</code>
+                                <span class="filter-name">Más rápido</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[v-]</code>
+                                <span class="filter-name">Más lento</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[i]</code>
+                                <span class="filter-name">Inverso</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[af]</code>
+                                <span class="filter-name">Afuera</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[t]</code>
+                                <span class="filter-name">Teléfono</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[c]</code>
+                                <span class="filter-name">Corriendo</span>
+                            </span>
+                            <span class="filter-tag">
+                                <code>[rb]</code>
+                                <span class="filter-name">Ruido blanco</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="instruction-section">
+                        <h4><i class="fas fa-microphone"></i> Voz Predeterminada</h4>
+                        <p>Si no especificas ninguna voz, se usará <strong>Carlos</strong> por defecto.</p>
+                    </div>
+
+                    <div class="instruction-section">
+                        <h4><i class="fas fa-music"></i> Aplicar Fondos</h4>
+                        <ul class="instruction-list">
+                            <li>
+                                <strong>Fondo global:</strong> 
+                                <code>:loquendo &lt;Carlos&gt; Hola a todos...</code>
+                                <p class="list-description">Aplica el fondo a todo el mensaje</p>
+                            </li>
+                            <li>
+                                <strong>Fondo específico:</strong> 
+                                <code>&lt;Carlos:loquendo&gt; Hola a todos...</code>
+                                <p class="list-description">Aplica el fondo solo a esa voz</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="instruction-section">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Notas Importantes</h4>
+                        <ul class="instruction-list">
+                            <li>Si aplicas un fondo global, se anularán los fondos de voces individuales</li>
+                            <li>No puedes usar dos fondos simultáneamente (el primero tiene prioridad)</li>
+                            <li>Revisa los ejemplos para ver la sintaxis correcta en acción</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+        </div>
     </section>
 
     <footer>
-        <p> Si tienes una sugerencia para el TTS de una voz, sonido o filtro, envíala al Discord</p>
+        <div class="footer-content">
+            <p><i class="fas fa-lightbulb"></i> ¿Tienes sugerencias para nuevas voces, sonidos o filtros?</p>
+            <p>Envíalas al <a href="https://discord.gg/PJ9PdMmCUP" target="_blank" rel="noopener noreferrer"><strong>Discord</strong></a> de la comunidad</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
